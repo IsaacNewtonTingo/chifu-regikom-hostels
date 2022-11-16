@@ -2,11 +2,11 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap");
 body {
-  --color-primary: #34dede;
-  --color-primary-dark: #34dede;
+  --color-primary: #056e97;
+  --color-primary-dark: #056e97;
   --color-secondary: #030303;
   --color-error: #cc3333;
-  --color-success: #00a2ff;
+  --color-success: #00ff73;
   --border-radius: 4px;
 
   margin: 0;
@@ -15,16 +15,13 @@ body {
   align-items: center;
   justify-content: center;
   font-size: 18px;
-  background: url(images3/college.jpg);
+  background: url(images/college.jpg);
   background-size: cover;
 }
 
 .container {
-  display: flex;
-  width: 100px;
-  max-width: 100px;
-  align-items: center;
-  justify-content: center;
+  width: 400px;
+  max-width: 400px;
   margin: 1rem;
   padding: 2rem;
   box-shadow: 0 0 40px rgba(0, 0, 0, 0.2);
@@ -134,8 +131,7 @@ body {
 .form__link:hover {
   text-decoration: underline;
 }
-.showModal,
-.alert {
+.showModal {
   position: fixed;
   background: transparent;
   top: 0;
@@ -143,4 +139,39 @@ body {
   bottom: 0;
   left: 0;
   z-index: 5;
+}
+#message {
+  display: none;
+  background: #f1f1f1;
+  color: #000;
+  position: relative;
+  padding: 20px;
+  margin-top: 10px;
+}
+
+#message p {
+  padding: 10px 35px;
+  font-size: 18px;
+}
+
+/* Add a green text color and a checkmark when the requirements are right */
+.valid {
+  color: green;
+}
+
+.valid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10004;";
+}
+
+/* Add a red text color and an "x" icon when the requirements are wrong */
+.invalid {
+  color: red;
+}
+
+.invalid:before {
+  position: relative;
+  left: -35px;
+  content: "&#10006;";
 }

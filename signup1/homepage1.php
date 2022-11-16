@@ -6,6 +6,9 @@ if (!isset($_SESSION['username'])) {
 }
 
 ?>
+<?php
+include 'connect10.php';?>
+
 
 
 
@@ -15,7 +18,8 @@ if (!isset($_SESSION['username'])) {
     <meta charset="utf-8" />
     <title>Regikom Hostels</title>
     <meta name="viewport" content="width-device, initial-scale" />
-    <link rel="stylesheet" href="main.css" />
+    <link rel="stylesheet" href="mainh.css" />
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -56,12 +60,9 @@ if (!isset($_SESSION['username'])) {
           Service & Crazy Fun.... Live Outside The Lines by finding Your
           Freedom, Without Leaving Home.
         </p>
-        <a
-          href="file:///C:/xampp/htdocs/regikomtestcode/signup%20and%20login/signup.html"
-        >
-          <button type="button" class="head-btn">GET STARTED</button></a
-        >
+
       </div>
+
     </header>
 
     <div class="sidenav" id="sidenav">
@@ -72,11 +73,13 @@ if (!isset($_SESSION['username'])) {
         <li><a href="homepage1.php">home</a></li>
         <li>
           <a
-            href="http://localhost/registration/regikomtestcode/booking%20page/booking.php"
+            href="http://localhost/registration/signup1/bookmain.php"
             >book</a
           >
         </li>
-        <li><a href="homepage.php">rate us</a></li>
+        <li><a href="payments.php">payments</a></li>
+
+      <li><a href="homepage.php">rate us</a></li>
       </ul>
 
       <a
@@ -109,7 +112,7 @@ if (!isset($_SESSION['username'])) {
               sukari, kenyatta Market and Ruiru regions.
             </p>
             <a
-              href="https://www.google.com/search?q=restaurants+around+nairobi&oq=restaurants+around+nairobi&aqs=chrome..69i57.8268j0j9&sourceid=chrome&ie=UTF-8"
+              href="https://www.google.com/maps/search/restaurants+around+nairobi/@-1.1772713,36.7927838,11z/data=!3m1!4b1"
             >
               <button type="button" class="btn">know more</button></a
             >
@@ -127,7 +130,7 @@ if (!isset($_SESSION['username'])) {
             <p>Regikom hostels offer free parking lots to resident students.</p>
             <a
               href="https://www.uwe.ac.uk/-/media/uwe/documents/about/policies/uwe-car-parking-policy.pdf"
-              ><p>(pdf)</p>
+              ><p>parking rules</p>
               <button type="button" class="btn">know more</button></a
             >
           </div>
@@ -188,7 +191,7 @@ if (!isset($_SESSION['username'])) {
               clients.
             </p>
             <a
-              href="https://www.google.com/search?q=bar+and+lounge+around+nairobi&oq=bar+and+lounge+around+nairobi&aqs=chrome..69i57.9339j0j9&sourceid=chrome&ie=UTF-8"
+              href="https://www.google.com/maps/search/bar+and+lounge+around+nairobi/@-1.1772691,36.898208,13z/data=!3m1!4b1"
             >
               <button type="button" class="btn">know more</button></a
             >
@@ -219,7 +222,44 @@ if (!isset($_SESSION['username'])) {
       <div class="title">
         <h2>rooms</h2>
       </div>
-      <div class="rooms-container">
+      <div class="amenities-container">
+
+      <table class="table ">
+  <thead>
+    <tr>
+
+      <th scope="col"><h4>roomtype</h4></th>
+      <th scope="col"><h4>availability</h4></th>
+
+
+
+    </tr>
+  </thead>
+  <tbody>
+
+ <?php
+$sql = "Select * from `availability`";
+$result = mysqli_query($con, $sql);
+if ($result) {
+    while ($row = mysqli_fetch_assoc($result)) {
+        $id = $row['id'];
+        $roomtype = $row['roomtype'];
+        $availability = $row['availability'];
+
+        echo ' <tr>
+
+        <th scope="row">' . $roomtype . '</th>
+        <td>' . $availability . '</td>
+
+      </tr>';
+    }
+
+}
+
+?>
+  </tbody>
+</table>
+</div>
         <article class="room">
           <div class="room-image">
             <img src="images/bedsitter1.jpg.jpg" alt="room image" />
@@ -243,6 +283,7 @@ if (!isset($_SESSION['username'])) {
                 <i class="fas fa-arrow-alt-circle-right"></i>
                 one washroom
               </li>
+
             </ul>
             <p>
               It has a single room house with a washroom and doubles up as a
@@ -251,7 +292,7 @@ if (!isset($_SESSION['username'])) {
             </p>
             <p class="rate"><span>9,900ksh/= </span> per month</p>
             <a
-              href="http://localhost/registration/regikomtestcode/booking%20page/booking.php"
+              href="http://localhost/registration/signup1/bookmain.php"
             >
               <button type="button" class="btn">book now</button></a
             >
@@ -281,14 +322,17 @@ if (!isset($_SESSION['username'])) {
                 <i class="fas fa-arrow-alt-circle-right"></i>
                 one bed
               </li>
+
             </ul>
+
+
             <p>
               in regikom hostels it comes fully furnished with one bed, beddings
               and a study table
             </p>
             <p class="rate"><span>10,900ksh/= </span> per month</p>
             <a
-              href="http://localhost/registration/regikomtestcode/booking%20page/booking.php"
+              href="http://localhost/registration/signup1/bookmain.php"
             >
               <button type="button" class="btn">book now</button></a
             >
@@ -322,6 +366,7 @@ if (!isset($_SESSION['username'])) {
                 <i class="fas fa-arrow-alt-circle-right"></i>
                 modern open kitchen
               </li>
+
             </ul>
             <p>
               It has one spaciaous bedroom with a washroom that doubles up as
@@ -329,7 +374,7 @@ if (!isset($_SESSION['username'])) {
             </p>
             <p class="rate"><span>13,500ksh/= </span> per month</p>
             <a
-              href="http://localhost/registration/regikomtestcode/booking%20page/booking.php"
+              href="http://localhost/registration/signup1/bookmain.php"
             >
               <button type="button" class="btn">book now</button></a
             >
@@ -367,6 +412,7 @@ if (!isset($_SESSION['username'])) {
                 <i class="fas fa-arrow-alt-circle-right"></i>
                 modern open kitchen
               </li>
+
             </ul>
             <p>
               It has two spaciaous bedrooms with a washroom that doubles up as
@@ -374,7 +420,7 @@ if (!isset($_SESSION['username'])) {
             </p>
             <p class="rate"><span>19,500ksh/= </span> per month</p>
             <a
-              href="http://localhost/registration/regikomtestcode/booking%20page/booking.php"
+              href="http://localhost/registration/signup1/bookmain.php"
             >
               <button type="button" class="btn">book now</button></a
             >
@@ -496,6 +542,10 @@ if (!isset($_SESSION['username'])) {
     </footer>
     <!-- end of footer -->
 
-    <script src="booking1.js"></script>
+    <script src="script1.js"></script>
+
+
+
+
   </body>
 </html>

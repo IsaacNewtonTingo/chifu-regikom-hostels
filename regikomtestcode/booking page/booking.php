@@ -137,9 +137,7 @@ if ($success) {
     <script src="booking3.js"></script>
 
  <script>
-var date=new date();
 
-console.log(date);
 
 
  </script>

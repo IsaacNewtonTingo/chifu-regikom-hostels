@@ -1,4 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+    header('loation:landing.php');
+
+}
+
+?>
+
+<?php
 include 'connect4.php';?>
 
 
@@ -14,6 +23,10 @@ include 'connect4.php';?>
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
       rel="stylesheet"
     />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
@@ -57,11 +70,6 @@ include 'connect4.php';?>
             ><i class="fas fa-tachometer-alt me-2"></i>Dashboard</a
           >
           <a
-            href="http://localhost/registration/admincrud/display.php"
-            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            ><i class="fas fa-project-diagram me-2"></i>Edit users</a
-          >
-          <a
             href="http://localhost/registration/signup1/homepage1.php"
             class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
             ><i class="fas fa-project-diagram me-2"></i>visit regikom
@@ -69,13 +77,47 @@ include 'connect4.php';?>
           >
 
           <a
-            href="#"
+            href="http://localhost/registration/admincrud/display1.php"
             class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
-            ><i class="fas fa-paperclip me-2"></i>Reports</a
+            ><i class="fas fa-project-diagram me-2"></i>admins</a
+          >
+          <a
+            href="http://localhost/registration/admincrud/display.php"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-project-diagram me-2"></i>User accounts</a
+          >
+          <a
+            href="http://localhost/registration/admincrud/display4.php"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>room availability</a
+          >
+
+
+          <a
+            href="mainprint.php"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>Booking reports</a
           >
 
           <a
-            href="#"
+            href="http://localhost/registration/admincrud/display3.php"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>payment reports</a
+          >
+          <a
+            href="receipt.php"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>invoice</a
+          >
+          <a
+            href="mailto:aloiceapamo@gmail.com"
+            class="list-group-item list-group-item-action bg-transparent second-text fw-bold"
+            ><i class="fas fa-paperclip me-2"></i>mails</a
+          >
+
+
+          <a
+            href="landing.php"
             class="list-group-item list-group-item-action bg-transparent text-danger fw-bold"
             ><i class="fas fa-power-off me-2"></i>Logout</a
           >
@@ -162,7 +204,7 @@ include 'connect4.php';?>
             </div>
 
             <div class="row my-5">
-              <h3 class="fs-5 ">Recent books</h3>
+              <h3 class="fs-5 ">Recent bookings</h3>
               <table class="table table-dark">
 
 
@@ -174,6 +216,7 @@ include 'connect4.php';?>
       <th scope="col">email</th>
       <th scope="col">checkindate</th>
       <th scope="col">checkoutdate</th>
+      <th scope="col">roomtype</th>
       <th scope="col">roomunits</th>
       <th scope="col">operations</th>
     </tr>
@@ -190,6 +233,7 @@ if ($result) {
         $email = $row['email'];
         $checkindate = $row['checkindate'];
         $checkoutdate = $row['checkoutdate'];
+        $roomtype = $row['roomtype'];
         $roomunits = $row['roomunits'];
         echo ' <tr>
         <th scope="row">' . $id . '</th>
@@ -197,11 +241,12 @@ if ($result) {
         <td>' . $email . '</td>
         <td>' . $checkindate . '</td>
         <td>' . $checkoutdate . '</td>
+        <td>' . $roomtype . '</td>
         <td>' . $roomunits . '</td>
 
         <td>
-    <button class="btn btn-primary"><a href="update.php? confirmid=' . $id . '" class="text-light">confirm</a></button>
-    <button class="btn btn-danger"><a href="delete.php?  cancelid=' . $id . '" class="text-light">cancel</a></button>
+    <button class="btn btn-primary"><a href="http://localhost/registration/admincrud/display3.php? confirmid=' . $id . '" class="text-light">confirm</a></button>
+    <button class="btn btn-danger"><a href="deleteb.php?  cancelid=' . $id . '" class="text-light">cancel</a></button>
 </td>
       </tr>';
     }
@@ -224,7 +269,7 @@ if ($result) {
       <!-- /#page-content-wrapper -->
     </div>
 
-    <script src="adnmin.js"></script>
+    <script src="admin.js"></script>
     <script>
       var el = document.getElementById("wrapper");
       var toggleButton = document.getElementById("menu-toggle");

@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';?>
+include 'connect9.php';?>
 
 
 <!DOCTYPE html>
@@ -9,47 +9,47 @@ include 'connect.php';?>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>admin operation</title>
+    <link rel="stylesheet" type="text/css" href="print3.css" media="print">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" >
 </head>
 <body>
     <div class="container">
-<button class="btn btn-primary my-5"><a href="index.php" class="text-light">Add User</a>
-</button>
-<table class="table table-dark">
+
+<table class="table table-striped">
   <thead>
     <tr>
       <th scope="col">id</th>
-      <th scope="col">username</th>
-      <th scope="col">gender</th>
       <th scope="col">email</th>
-      <th scope="col">phone number</th>
-      <th scope="col">password</th>
-      <th scope="col">operations</th>
+
+      <th scope="col">amountperunit</th>
+      <th scope="col">roomunits</th>
+      <th scope="col">payment status</th>
+      <th scope="col">update payment status</th>
     </tr>
   </thead>
   <tbody>
 
  <?php
-$sql = "Select * from `registration`";
+$sql = "Select * from `payments`";
 $result = mysqli_query($con, $sql);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $row['id'];
-        $username = $row['username'];
-        $gender = $row['gender'];
         $email = $row['email'];
-        $number = $row['number'];
-        $password = $row['password'];
+        $amountperunit = $row['amountperunit'];
+        $roomunits = $row['roomunits'];
+
+        $paymentstatus = $row['paymentstatus'];
         echo ' <tr>
         <th scope="row">' . $id . '</th>
-        <td>' . $username . '</td>
-        <td>' . $gender . '</td>
         <td>' . $email . '</td>
-        <td>' . $number . '</td>
-        <td>' . $password . '</td>
+        <td>' . $amountperunit . '</td>
+        <td>' . $roomunits . '</td>
+        <td>' . $paymentstatus . '</td>
         <td>
-    <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">Update</a></button>
+    <button class="btn btn-primary"><a href="update3.php? updateid=' . $id . '" class="text-light">update</a></button>
 
+</td>
       </tr>';
     }
 
@@ -61,6 +61,7 @@ if ($result) {
 
   </tbody>
 </table>
+<button onclick="window.print();" class="btn btn-primary" id="print-btn">Print</button>
 
     </div>
 </body>

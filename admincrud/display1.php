@@ -1,5 +1,5 @@
 <?php
-include 'connect.php';?>
+include 'connect8.php';?>
 
 
 <!DOCTYPE html>
@@ -13,16 +13,14 @@ include 'connect.php';?>
 </head>
 <body>
     <div class="container">
-<button class="btn btn-primary my-5"><a href="index.php" class="text-light">Add User</a>
+<button class="btn btn-primary my-5"><a href="admin1.php" class="text-light">Add Admin</a>
 </button>
 <table class="table table-dark">
   <thead>
     <tr>
       <th scope="col">id</th>
       <th scope="col">username</th>
-      <th scope="col">gender</th>
-      <th scope="col">email</th>
-      <th scope="col">phone number</th>
+
       <th scope="col">password</th>
       <th scope="col">operations</th>
     </tr>
@@ -30,26 +28,23 @@ include 'connect.php';?>
   <tbody>
 
  <?php
-$sql = "Select * from `registration`";
+$sql = "Select * from `admins`";
 $result = mysqli_query($con, $sql);
 if ($result) {
     while ($row = mysqli_fetch_assoc($result)) {
         $id = $row['id'];
         $username = $row['username'];
-        $gender = $row['gender'];
-        $email = $row['email'];
-        $number = $row['number'];
+
         $password = $row['password'];
         echo ' <tr>
         <th scope="row">' . $id . '</th>
         <td>' . $username . '</td>
-        <td>' . $gender . '</td>
-        <td>' . $email . '</td>
-        <td>' . $number . '</td>
+
         <td>' . $password . '</td>
         <td>
-    <button class="btn btn-primary"><a href="update.php? updateid=' . $id . '" class="text-light">Update</a></button>
-
+    <button class="btn btn-primary"><a href="update1.php? updateid=' . $id . '" class="text-light">Update</a></button>
+    <button class="btn btn-danger"><a href="delete1.php?  deleteid=' . $id . '" class="text-light">Delete</a></button>
+</td>
       </tr>';
     }
 
